@@ -1,0 +1,61 @@
+<p>
+    <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a> 
+</p>
+<p>
+  <input type="text" class="form-control" #f (keyup)="filter(f.value)" placeholder="Search...">
+</p>
+
+
+<!-- 
+<div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+    <data-table id="persons-grid"
+        headerTitle="Employees"
+        [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+        >
+        <data-table-column
+            [property]="'title'"
+            [header]="'Title'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'price'"
+            [header]="'Price'"
+            [sortable]="true">
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.price | currency:'USD':true }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column
+            [property]="'key'"
+            [header]="'#'">
+            <ng-template #dataTableCell let-item="item">
+                <a [routerLink]="[ '/admin/products/', item.key ]">edit</a>
+            </ng-template>
+        </data-table-column>
+
+        </data-table-column>
+    </data-table>
+</div> -->
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filterdProductList">
+        <td>{{product.payload.val().title}}</td>
+        <td>{{product.payload.val().price}}</td>
+        <td>
+            <a [routerLink]="[ '/admin/products/', product.key ]">edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
